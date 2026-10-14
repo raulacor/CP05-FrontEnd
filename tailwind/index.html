@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Tailwind</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-[#EFE7D6] font-['Work_Sans'] text-[#2A241C]">
+
+    <div class="max-w-5xl mx-auto px-6">
+        <nav class="flex justify-between items-center py-4 border-b border-[#A9895F]">
+            <h1 class="text-xl font-['Fraunces'] font-semibold">Fio <span class="text-[#9A3324] font-['Fraunces'] italic">&amp;</span>Prensa</h1>
+            <ul class="flex gap-8 text-sm">
+                <li>O ofício</li>
+                <li>Serviços</li>
+                <li>Peças</li>
+                <li>Contato</li>
+            </ul>
+            <button class="bg-[#1B4332] text-white text-sm font-semibold px-5 py-3">Agendar visita</button>
+        </nav>
+
+        <section class="flex justify-between gap-16 py-16">
+            <div class="w-2/5">
+                <h2 class="text-5xl font-['Fraunces'] font-semibold leading-tight">Livros que se seguram nas mãos por gerações.</h2>
+                <p class="my-6 text-[#8A7F70]">Costuramos, colamos e prensamos à mão — do caderno de uso diário à restauração de exemplares de família. Cada peça passa pelas mesmas quatro etapas que aprendemos há trinta anos.</p>
+                <button class="border border-[#1B4332] px-4 py-2 text-sm font-semibold text-[#1B4332]">Ver serviços</button>
+            </div>
+
+            <div class="flex flex-col w-2/5">
+                <div class="flex items-center gap-4 border-t py-4 border-[#A9895F]">
+                    <div class="w-8 h-8 bg-[#9A3324]"></div>
+                    <div>
+                        <h3 class="font-semibold">Linho belga, cor terracota</h3>
+                        <h4 class="text-sm text-[#8A7F70]">Capa dura, acabamento fosco</h4>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 border-t py-4 border-[#A9895F]">
+                    <div class="w-8 h-8 bg-[#1B4332]"></div>
+                    <div>
+                        <h3 class="font-semibold">Percalux verde-musgo</h3>
+                        <h4 class="text-sm text-[#8A7F70]">Resistente à umidade</h4>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 border-y py-4 border-[#A9895F]">
+                    <div class="w-8 h-8 bg-[#A9895F]"></div>
+                    <div>
+                        <h3 class="font-semibold">Papel de guarda marmorizado</h3>
+                        <h4 class="text-sm text-[#8A7F70]">Feito à mão, padrão único</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="bg-[#E4DAC2]">
+        <div class="max-w-5xl mx-auto px-6 py-16">
+            <h2 class="font-['Fraunces'] font-semibold text-3xl">O ofício, em quatro etapas</h2>
+            <p class="text-[#8A7F70] mt-3">Cada livro passa pela mesma sequência de trabalho, do primeiro caderno de páginas soltas até a prensa final.</p>
+            <div class="grid grid-cols-4 gap-6 mt-10">
+                <div class="border-l border-[#A9895F] pl-6 first:border-l-0 first:pl-0">
+                    <h3 class="font-['Fraunces'] text-2xl text-[#9A3324]">01</h3>
+                    <h4 class="font-['Fraunces'] font-semibold mt-3">Dobra</h4>
+                    <p class="text-sm text-[#8A7F70] mt-2">As folhas são dobradas em cadernos e organizadas na ordem de leitura.</p>
+                </div>
+                <div class="border-l border-[#A9895F] pl-6 first:border-l-0 first:pl-0">
+                    <h3 class="font-['Fraunces'] text-2xl text-[#9A3324]">02</h3>
+                    <h4 class="font-['Fraunces'] font-semibold mt-3">Costura</h4>
+                    <p class="text-sm text-[#8A7F70] mt-2">Os cadernos são costurados manualmente com fio encerado, ponto a ponto.</p>
+                </div>
+                <div class="border-l border-[#A9895F] pl-6 first:border-l-0 first:pl-0">
+                    <h3 class="font-['Fraunces'] text-2xl text-[#9A3324]">03</h3>
+                    <h4 class="font-['Fraunces'] font-semibold mt-3">Colagem</h4>
+                    <p class="text-sm text-[#8A7F70] mt-2">O lombo recebe cola natural, que dá firmeza sem engessar o papel.</p>
+                </div>
+                <div class="border-l border-[#A9895F] pl-6 first:border-l-0 first:pl-0">
+                    <h3 class="font-['Fraunces'] text-2xl text-[#9A3324]">04</h3>
+                    <h4 class="font-['Fraunces'] font-semibold mt-3">Prensagem</h4>
+                    <p class="text-sm text-[#8A7F70] mt-2">O volume descansa na prensa por 24h para fixar a forma definitiva.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-5xl mx-auto px-6 py-16">
+        <h2 class="font-['Fraunces'] font-semibold text-3xl">Peças recentes</h2>
+        <div class="grid grid-cols-4 grid-rows-[10rem_10rem] gap-2 mt-8">
+            <div class="col-span-2 row-span-2 bg-linear-to-br from-[#D9CBA3] to-[#B39463] flex items-end p-2 text-[10px] font-semibold uppercase tracking-wider text-[#2A241C]/60">Caderno de campo</div>
+            <div class="bg-linear-to-br from-[#D9CBA3] to-[#B39463] flex items-end p-2 text-[10px] font-semibold uppercase tracking-wider text-[#2A241C]/60">Restauro 1948</div>
+            <div class="bg-linear-to-br from-[#D9CBA3] to-[#B39463] flex items-end p-2 text-[10px] font-semibold uppercase tracking-wider text-[#2A241C]/60">Álbum de casamento</div>
+            <div class="col-span-2 bg-linear-to-br from-[#D9CBA3] to-[#B39463] flex items-end p-2 text-[10px] font-semibold uppercase tracking-wider text-[#2A241C]/60">Edição limitada, 12 exemplares</div>
+        </div>
+    </section>
+
+    <section class="border-t border-[#A9895F]">
+        <div class="max-w-5xl mx-auto px-6 py-16">
+            <blockquote class="border-l-2 border-[#9A3324] pl-4 max-w-xl">
+                <p class="font-['Fraunces'] italic text-2xl leading-snug">Levei o diário do meu avô, que estava se desfazendo, e voltou como se tivesse sido feito ontem — mas ainda com a capa original.</p>
+                <p class="text-sm mt-4"><span class="font-semibold">Helena Mourão</span> <span class="text-[#8A7F70]">— cliente desde 2019</span></p>
+            </blockquote>
+        </div>
+    </section>
+
+    <footer class="bg-[#1B4332] text-[#EFE7D6]">
+        <div class="max-w-5xl mx-auto px-6 py-14">
+            <h2 class="font-['Fraunces'] font-semibold text-2xl">Visite o ateliê</h2>
+            <div class="flex justify-between mt-10 text-sm">
+                <div>
+                    <h3 class="text-xs uppercase tracking-wider text-[#A9895F]">Endereço</h3>
+                    <p class="mt-2">Rua dos Encadernadores, 214 — Lapa, São Paulo</p>
+                </div>
+                <div>
+                    <h3 class="text-xs uppercase tracking-wider text-[#A9895F]">Horário</h3>
+                    <p class="mt-2">Terça a sábado, 10h às 18h</p>
+                </div>
+                <div>
+                    <h3 class="text-xs uppercase tracking-wider text-[#A9895F]">Contato</h3>
+                    <p class="mt-2">contato@fioeprensa.com.br</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
