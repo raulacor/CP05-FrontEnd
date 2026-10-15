@@ -4,6 +4,95 @@ A scroll-driven landing page for Last Stop, an IMAX 70mm movie palace in São Pa
 
 The page opens on the closed curtain with an **Enter the theatre** button and stays locked until it is pressed (trying to scroll makes the button nudge). There are no shortcuts past the story: no navigation, no skip link. The page ends on the finale, where **Book your seat** opens the premiere showtimes and **Watch the trailer** opens the trailer.
 
+## Prompt Inicial:
+
+```
+Build a landing page for Last Stop, a luxury movie theater in São Paulo, Brazil, that shows films in IMAX 70mm film projection on a 40m x 28m screen, the largest cinema screen in the world. Audience: film lovers who care about image and sound quality and want a grand, special-occasion night out.
+
+Goal: the visitor should check showtimes or book a seat within 30 seconds.
+
+Core concept: "the anatomy of the perfect screening." Scrolling down opens the curtains and takes the auditorium apart one feature at a time, like a cinematic exploded-view diagram, and ends with a premiere on the big screen.
+
+DESIGN DIRECTION
+- Opulent old-Hollywood grand-cinema aesthetic: deep crimson velvet, polished gold, black lacquer, warm candlelight-amber lighting. Think a 1920s movie palace or an opera house box, rendered with modern precision.
+- Typography: an elegant high-contrast serif for headlines (Didone/Art Deco feel), small-caps letter-spaced labels, a refined sans for body text (Google Fonts). Huge numbers in the serif, set in gold.
+- Details: thin gold Art Deco line ornaments as section dividers, gold-outlined buttons that fill on hover, a subtle velvet texture on dark backgrounds.
+- Palette as CSS custom properties: crimson, gold, black, warm ivory for text.
+- Over the top in material and lighting, but disciplined in layout: generous spacing, few elements per screen, one feature at a time. No decorative gradients, no generic cards, no stock icons.
+
+THE SCROLL STORY (Three.js scene, pinned while the story plays; progress tied directly to scroll position with GSAP ScrollTrigger, so scrolling up plays everything in reverse)
+
+1. Opening: the page loads on heavy red velvet curtains filling the screen (3D cloth with visible folds and soft sheen), with "Last Stop" in gold and a "Scroll to enter" hint. On the first scroll they part and draw back, revealing the auditorium from the back row, the giant screen glowing in the dark. Scrolling back to the top closes them.
+
+2. Feature breakdown. The camera moves through the space and the auditorium separates into its parts. Each part comes forward under a warm spotlight, gets explained, then steps back as the next arrives. Each step has a short headline, one or two lines of copy and one big gold number:
+   a. The film: a 70mm film strip unspools across the screen; show its large frame next to a standard 35mm frame for scale. Big number: "70mm".
+   b. The screen: the camera pulls back to reveal its full height and width, with a human silhouette for scale and the 1.43:1 aspect ratio outlined in gold. Big number: "40m × 28m", with the line "The largest cinema screen in the world."
+   c. The projector: the projector rises out of the booth, the light beam becomes visible, and the film path through the machine is traced in gold. Big number: "1.43:1", the full IMAX frame.
+   d. The sound: the speakers separate from the walls and sound waves ripple out from each channel position, including side and overhead. Big number: "12 channels".
+   e. The seats: the velvet rows fan out to show the steep stadium seating and sightlines that keep the whole screen in view. Big number: "420 seats".
+   Text appears beside the 3D part on desktop and below it on mobile.
+
+3. Finale:
+   - The parts reassemble. The camera glides to the center seat of the front balcony and settles facing the screen. The curtains part fully again and the house lights dim.
+   - The screen lights up with a promotional takeover for "Avengers: Doomsday" in IMAX 70mm. Map an image or video texture onto the 3D screen from these placeholder files:
+       /assets/promo/doomsday-keyart.jpg
+       /assets/promo/doomsday-trailer.mp4 (optional; muted and looping)
+     I will add the official promotional assets myself. Do not draw, recreate or invent any characters, logos or artwork for the film. Until the files exist, show a tasteful dark placeholder reading "Key art here." Create the /assets/promo/ folder with a README explaining which files go there.
+   - HTML layer over the scene, in the gold serif style: the film title, "Presented in IMAX 70mm", "Premiere December 18", and two buttons: "Book your seat" and "Watch the trailer" (opens the trailer in a lightbox).
+   - The screen glow spills onto the curtains, gold trim and front rows, so the promo feels projected in the room.
+
+3D STYLE
+- Simple, stylized low-poly geometry with rich lighting and materials (velvet sheen, brushed gold) rather than detailed models.
+- Do not use the IMAX logo or any trademarked artwork; use only the "Last Stop" name and a simple gold wordmark you design for it.
+
+PERFORMANCE AND FALLBACKS
+- Cap pixel ratio at 2, reuse geometries and materials, pause rendering when the scene is off-screen, target 60fps on a mid-range laptop.
+- Under 768px: a lighter scene (fewer objects, simpler lighting and cloth, shorter camera moves).
+- With prefers-reduced-motion or no WebGL: replace the 3D story with static illustrated panels, one per step (curtains, each feature, finale). The finale panel shows the key art inside a velvet-and-gold screen frame with the same text and buttons.
+
+RESPONSIVENESS (non-negotiable)
+- Mobile-first. Check at 360px, 768px, 1280px and 1920px.
+- Fluid type and spacing with clamp(); Grid/Flexbox layout; no fixed widths, no horizontal scroll.
+- The canvas resizes correctly on viewport and orientation change.
+- Touch targets at least 44px; text stays readable over the 3D scene with accessible contrast.
+
+AFTER THE STORY
+Now showing (poster placeholders with showtimes) → location in São Paulo and how to get there (map placeholder) → short FAQ (ticket types, accessibility, parking, dress code) → footer. These sections are calm and elegant: same palette and type, gold dividers, simple fade reveals. All copy in English.
+
+TECH
+Vite + vanilla JS + Three.js + GSAP ScrollTrigger. Three.js code in its own module, with the curtains, each feature step and the finale as separate functions so they're easy to edit or reorder. Semantic HTML, lazy-loaded images.
+
+PROCESS
+1. Before writing code, tell me in 5 lines the visual style, the camera path and how each step will look.
+2. Build it.
+3. Run it locally, scroll the full story forward and backward at every breakpoint, check the reduced-motion fallback and the key art placeholder, and fix anything janky, unreadable or generic before you finish.
+```
+
+## Prompt de Correcao
+
+```
+Task Overview
+Implement a camera path fix and integrate specific end-sequence visual effects and database image assets.
+
+---
+
+1. Camera Collision & Clipping Fix (Priority)
+- Issue: Camera clips through seat geometry at the start of the sequence.
+- Fix: Adjust the initial camera transform and trajectory at $t = 0$ to ensure proper clearance and smooth initial motion without interior mesh obstruction.
+
+---
+
+2. Dynamic Media & Database Integration
+- Integrate a media database/asset repository containing images for *Avengers: Doomsday*.
+- Configure the end-sequence screen model to query and display these images smoothly at the conclusion of the animation.
+
+---
+
+3. Atmospheric & Lighting Sequence
+- Color Shift: Trigger a global green ambient light/tint shift dynamically as environmental lighting darkens.
+- VFX: Introduce low-lying volumetric smoke/fog particles to add depth and dramatic texture to the environment during the transition.
+```
+
 ## Run it
 
 ```bash
@@ -12,8 +101,6 @@ npm run dev       # local dev server
 npm run build     # production build in dist/
 npm run preview   # serve the production build
 ```
-
-Add `?debug` to the URL to expose `window.__lastStop` (context, timeline, ScrollTrigger) in production builds.
 
 ## Where things live
 
